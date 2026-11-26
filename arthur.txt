@@ -24,3 +24,4 @@
         status BOOLEAN DEFAULT 1
         );
 
+ 
