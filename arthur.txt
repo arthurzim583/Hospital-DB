@@ -24,4 +24,69 @@
         status BOOLEAN DEFAULT 1
         );
 
+	CREATE TABLE convenios(
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        cpf_paciente VARCHAR(11) UNIQUE NOT NULL,
+        tipo_convenio VARCHAR(100),
+        tempo_convenio DATETIME
+        );
  
+ CREATE TABLE produtos_limpeza_e_higiene(
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        quantidade INT NOT NULL,
+        status BOOLEAN DEFAULT 1
+        );
+
+ CREATE TABLE filiais (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        status_hospitalares BOOLEAN DEFAULT 1,
+        telefone_hospital VARCHAR(10) NOT NULL
+        );
+
+CREATE TABLE estacionamento (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        vagas VARCHAR(100) NOT NULL UNIQUE,
+        entrada DATETIME NOT NULL,
+        saida DATETIME NOT NULL,
+        Placa VARCHAR(50) NOT NULL UNIQUE
+        );
+
+CREATE TABLE quartos (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        numero INT NOT NULL,
+        bloco INT NOT NULL,
+        status BOOLEAN DEFAULT 1
+        );
+
+CREATE TABLE cantina (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        lote VARCHAR(50) NOT Null UNIQUE,
+        FOREIGN KEY (id) REFERENCES estoque_alimentos(id),
+        FOREIGN KEY (id) REFERENCES funcionarios(id)
+        );
+
+	CREATE TABLE camara_mortuaria (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        FOREIGN KEY (id) REFERENCES pacientes(id),
+        numero_gaveta INT NOT NULL UNIQUE,
+        FOREIGN KEY (id) REFERENCES funcionarios(id),
+        data_entrada DATETIME NOT NULL,
+        data_saida DATETIME NOT NULL
+        );
+
+	CREATE TABLE maternidade (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        FOREIGN KEY (id) REFERENCES pacientes(id),
+        FOREIGN KEY (id) REFERENCES funcionarios(id),
+        data_hora_parto DATETIME NOT NULL,
+        tipo_parto VARCHAR(50) NOT NULL,
+        semanas_gestacao INT NOT NULL
+        );
+
+        
+
+
+
+        
+
+        
